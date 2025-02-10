@@ -1,0 +1,153 @@
+{
+	"info": {
+		"_postman_id": "21dab783-d84c-457f-bb88-7d7113c0f0cc",
+		"name": "Albums",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38868533"
+	},
+	"item": [
+		{
+			"name": "albumsId",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}{{Users\n}}/1/albums",
+					"host": [
+						"{{baseUrl}}{{Users\n}}"
+					],
+					"path": [
+						"1",
+						"albums"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "albumUsuárioInexistente",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}{{Users\n}}/999/albums",
+					"host": [
+						"{{baseUrl}}{{Users\n}}"
+					],
+					"path": [
+						"999",
+						"albums"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "albumIdUsuárioInválido",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}{{Users\n}}/abc/albums",
+					"host": [
+						"{{baseUrl}}{{Users\n}}"
+					],
+					"path": [
+						"abc",
+						"albums"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "criarAlbum",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userId\": 1,\r\n    \"title\": \"Robson Metaleiro\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}albums",
+					"host": [
+						"{{baseUrl}}albums"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "criarAlbumSemUserId",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Robson Metaleiro\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}albums",
+					"host": [
+						"{{baseUrl}}albums"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deletaAlbum",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}albums/101",
+					"host": [
+						"{{baseUrl}}albums"
+					],
+					"path": [
+						"101"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "atualizaAlbum",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userId\": 1,\r\n    \"title\": \"Robson Metaleiro Part-II\",\r\n    \"id\": 101\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}albums/1",
+					"host": [
+						"{{baseUrl}}albums"
+					],
+					"path": [
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,154 @@
+{
+	"info": {
+		"_postman_id": "b7c302db-6bac-4e38-a9c6-4dff963c40a6",
+		"name": "Comments",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38868533"
+	},
+	"item": [
+		{
+			"name": "comentáriosPosts",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/posts/2/comments",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"posts",
+						"2",
+						"comments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "comentáriosPostInexistente",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/posts/999/comments",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"posts",
+						"999",
+						"comments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "comentáriosPosIdInvalido",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/posts/abc/comments",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"posts",
+						"abc",
+						"comments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "criaComentários",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"postId\": 1,\r\n    \"name\": \"ROBSON\",\r\n    \"email\": \"robson@robson.robson\",\r\n    \"body\": \"RobsonTeste\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}comments",
+					"host": [
+						"{{baseUrl}}comments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "criaComentáriosSemPostId",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"ROBSON\",\r\n    \"email\": \"robson@robson.robson\",\r\n    \"body\": \"RobsonTeste\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}comments",
+					"host": [
+						"{{baseUrl}}comments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "criaComentáriosEmailInválido",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"ROBSON\",\r\n    \"email\": \"robson\",\r\n    \"body\": \"RobsonTeste\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}comments",
+					"host": [
+						"{{baseUrl}}comments"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

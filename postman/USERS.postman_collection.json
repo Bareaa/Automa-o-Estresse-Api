@@ -1,0 +1,357 @@
+{
+	"info": {
+		"_postman_id": "979ce0e6-8181-4150-8a06-fd957c1fe131",
+		"name": "USERS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38868533"
+	},
+	"item": [
+		{
+			"name": "listaUsuários",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}users",
+					"host": [
+						"{{baseUrl}}users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "listaUsuário_id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}{{Users\n}}4",
+					"host": [
+						"{{baseUrl}}{{Users\n}}4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "nãoExistente",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}{{Users\n}}99",
+					"host": [
+						"{{baseUrl}}{{Users\n}}99"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "criarUsuário",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Test User\",\r\n    \"username\": \"testuser\",\r\n    \"email\": \"test@test.com\",\r\n    \"address\": {\r\n        \"street\": \"Test Street\",\r\n        \"suite\": \"Test Suite\",\r\n        \"city\": \"Test City\",\r\n        \"zipcode\": \"12345\",\r\n        \"geo\": {\r\n            \"lat\": \"-37.3159\",\r\n            \"lng\": \"81.1496\"\r\n        }\r\n    },\r\n    \"phone\": \"1-770-736-8031\",\r\n    \"website\": \"test.com\",\r\n    \"company\": {\r\n        \"name\": \"Test Company\",\r\n        \"catchPhrase\": \"Test Phrase\",\r\n        \"bs\": \"Test BS\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}{{Users\n}}",
+					"host": [
+						"{{baseUrl}}{{Users\n}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "erro500",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"city\": \"São Paulo\",\r\n\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}{{Users\n}}",
+					"host": [
+						"{{baseUrl}}{{Users\n}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "dadosInvalidosBug",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"\"\r\n}\r\n\r\n//deveria dar erro 400 por estar passando apenas uma string ou um campo vazio, mas em ambos os casos ele retorna status 201 e cria o usuário",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}{{Users\n}}",
+					"host": [
+						"{{baseUrl}}{{Users\n}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "atualizaUsuário",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Test User Atualizado\",\r\n    \"username\": \"testuser\",\r\n    \"email\": \"test@test.com\",\r\n    \"address\": {\r\n        \"street\": \"Test Street\",\r\n        \"suite\": \"Test Suite\",\r\n        \"city\": \"Test City\",\r\n        \"zipcode\": \"12345\",\r\n        \"geo\": {\r\n            \"lat\": \"-37.3159\",\r\n            \"lng\": \"81.1496\"\r\n        }\r\n    },\r\n    \"phone\": \"1-770-736-8031\",\r\n    \"website\": \"test.com\",\r\n    \"company\": {\r\n        \"name\": \"Test Company\",\r\n        \"catchPhrase\": \"Test Phrase\",\r\n        \"bs\": \"Test BS\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}{{Users\n}}/1",
+					"host": [
+						"{{baseUrl}}{{Users\n}}"
+					],
+					"path": [
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "atualizaUsuárioInexistente",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Robson Robson\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}{{Users\n}}/100",
+					"host": [
+						"{{baseUrl}}{{Users\n}}"
+					],
+					"path": [
+						"100"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "atualizaUsuárioParcialmente",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Atualiza de forma parcial\",\r\n    \"email\": \"parcial@teste.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}{{Users\n}}/1",
+					"host": [
+						"{{baseUrl}}{{Users\n}}"
+					],
+					"path": [
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deletaUsuário",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}{{Users\n}}/1",
+					"host": [
+						"{{baseUrl}}{{Users\n}}"
+					],
+					"path": [
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deletaUsuárioInexistenteBug",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "//Ele não deveria retornar status 200, pois não existe um usuário criado com esse id, sendo a api mockada apenas com 10 usuários.",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}{{Users\n}}/100",
+					"host": [
+						"{{baseUrl}}{{Users\n}}"
+					],
+					"path": [
+						"100"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					"if (pm.response.headers.get(\"Content-Type\").includes(\"application/json\")) {\r",
+					"    pm.visualizer.set(`\r",
+					"        <html>\r",
+					"        <head>\r",
+					"            <style>\r",
+					"                body { \r",
+					"                    font-family: Arial, sans-serif; \r",
+					"                    padding: 10px;\r",
+					"                    max-width: 800px;\r",
+					"                    margin: 0 auto;\r",
+					"                }\r",
+					"                .user-card {\r",
+					"                    border: 1px solid #ddd;\r",
+					"                    margin: 8px 0;\r",
+					"                    padding: 10px;\r",
+					"                    border-radius: 4px;\r",
+					"                    background-color: #f9f9f9;\r",
+					"                    font-size: 13px;\r",
+					"                }\r",
+					"                .user-header {\r",
+					"                    display: flex;\r",
+					"                    justify-content: space-between;\r",
+					"                    align-items: center;\r",
+					"                    border-bottom: 1px solid #eee;\r",
+					"                    padding-bottom: 5px;\r",
+					"                    margin-bottom: 5px;\r",
+					"                }\r",
+					"                .user-header h2 {\r",
+					"                    margin: 0;\r",
+					"                    font-size: 16px;\r",
+					"                }\r",
+					"                .info-grid {\r",
+					"                    display: grid;\r",
+					"                    grid-template-columns: repeat(3, 1fr);\r",
+					"                    gap: 8px;\r",
+					"                }\r",
+					"                .info-section {\r",
+					"                    padding: 5px;\r",
+					"                }\r",
+					"                .info-title {\r",
+					"                    color: #666;\r",
+					"                    font-weight: bold;\r",
+					"                    font-size: 12px;\r",
+					"                }\r",
+					"                .info-content {\r",
+					"                    margin-top: 3px;\r",
+					"                }\r",
+					"            </style>\r",
+					"        </head>\r",
+					"        <body>\r",
+					"            {{#each response}}\r",
+					"            <div class=\"user-card\">\r",
+					"                <div class=\"user-header\">\r",
+					"                    <h2>{{name}}</h2>\r",
+					"                    <span>ID: {{id}}</span>\r",
+					"                </div>\r",
+					"                <div class=\"info-grid\">\r",
+					"                    <div class=\"info-section\">\r",
+					"                        <div class=\"info-title\">Contato</div>\r",
+					"                        <div class=\"info-content\">\r",
+					"                            {{email}}<br>\r",
+					"                            {{phone}}\r",
+					"                        </div>\r",
+					"                    </div>\r",
+					"                    <div class=\"info-section\">\r",
+					"                        <div class=\"info-title\">Empresa</div>\r",
+					"                        <div class=\"info-content\">\r",
+					"                            {{company.name}}\r",
+					"                        </div>\r",
+					"                    </div>\r",
+					"                    <div class=\"info-section\">\r",
+					"                        <div class=\"info-title\">Cidade</div>\r",
+					"                        <div class=\"info-content\">\r",
+					"                            {{address.city}}\r",
+					"                        </div>\r",
+					"                    </div>\r",
+					"                </div>\r",
+					"            </div>\r",
+					"            {{/each}}\r",
+					"        </body>\r",
+					"        </html>\r",
+					"    `, {\r",
+					"        response: pm.response.json()\r",
+					"    });\r",
+					"}"
+				]
+			}
+		}
+	]
+}

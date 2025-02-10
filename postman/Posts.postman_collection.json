@@ -1,0 +1,264 @@
+{
+	"info": {
+		"_postman_id": "69335d2e-9583-4d93-97b3-8bf300fccc11",
+		"name": "Posts",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38868533"
+	},
+	"item": [
+		{
+			"name": "postUsuário",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}{{extend}}/10/posts",
+					"host": [
+						"{{baseUrl}}{{extend}}"
+					],
+					"path": [
+						"10",
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "urlMalFormada",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://jsonplaceholder.typicode.com/posts/abc",
+					"protocol": "https",
+					"host": [
+						"jsonplaceholder",
+						"typicode",
+						"com"
+					],
+					"path": [
+						"posts",
+						"abc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "postEspecífico",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/posts/7",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"posts",
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "postUsuárioInexistente",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/69/posts",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"69",
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "postUsuárioInexistente Copy",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/posts/999",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"posts",
+						"999"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "criaPosts",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Criação de posts\",\r\n    \"body\": \"robsonrobsonrobsonrobsonrobsonrobsonrobson\",\r\n    \"userId\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/posts",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "criaPostsSemUserId",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"body\": \"robsonrobsonrobsonrobsonrobsonrobsonrobson\",\r\n    \"userId\": 1\r\n}\r\n\r\n//a api aceita muitos tipos de request, não tem um filtro de param obrigatórios, testei tanto sem titulo, quando sem userid ambos os casos retornaram status 201",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/posts",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "criaPostsBodyInvalido",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n    \"body\": \"robsonrobsonrobsonrobsonrobsonrobsonrobson\",\r\n    \"userId\": 1\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/posts",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "criaPostsUsuárioInexistente",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Teste\",\r\n    \"body\": \"Teste\",\r\n    \"userId\": 69\r\n}\r\n\r\n//ele passou, numa api normal não deveria ocorrer isso",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/posts",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deletaPosts",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Criação de posts\",\r\n    \"body\": \"robsonrobsonrobsonrobsonrobsonrobsonrobson\",\r\n    \"userId\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/posts/1",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"posts",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
